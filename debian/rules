@@ -43,7 +43,7 @@ binary-indep: build install
 	dh_installdocs $(VERSION_DIR)/README.txt
 	dh_installexamples $(VERSION_DIR)/examples/*
 	dh_install
-	dh_pysupport
+	dh_python2
 	dh_installman
 	dh_link
 	dh_compress
