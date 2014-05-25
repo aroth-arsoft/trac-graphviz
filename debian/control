@@ -1,0 +1,22 @@
+Source: trac-graphviz
+Section: python
+Priority: optional
+Maintainer: Christoph Egger <christoph.egger@gmx.de>
+Build-Depends: debhelper (>= 7.0~), python-setuptools, python (>= 2.5.4-1~)
+Build-Depends-Indep: python-support (>= 0.3)
+Standards-Version: 3.8.3
+DM-Upload-Allowed: yes
+Vcs-Git: git://git.debian.org/git/users/christoph-guest/trac-graphviz.git/
+Vcs-Browser: http://git.debian.org/?p=users/christoph-guest/trac-graphviz.git
+Homepage: http://trac-hacks.org/wiki/GraphvizPlugin
+
+Package: trac-graphviz
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends}, trac (>= 0.11.1), python-pygraphviz
+Recommends: librsvg2-bin
+Enhances: trac
+Description: Graphs printing plugin for Trac
+ This is a Plugin for the Trac project management application. It
+ allows drawing of diagrams in a extension to the wiki markup language
+ and renders them using the graphviz programs into a form that is
+ displayable in a webbrowser.
