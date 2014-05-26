@@ -1,59 +1,11 @@
 #!/usr/bin/make -f
-# -*- makefile -*-
 
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-include /usr/share/python/python.mk
+%:
+	dh $@ --with python2
 
-VERSION_DIR="0.11-0.7.7"
-
-build: build-stamp
-build-stamp:
-	dh_testdir
-
-	(cd $(VERSION_DIR) && python setup.py build)
-
-	touch $@
-
-clean:
-	dh_testdir
-	dh_testroot
-
-	(cd $(VERSION_DIR) && python setup.py clean)
-
-	rm -rf $(VERSION_DIR)/build $(VERSION_DIR)/graphviz.egg-info
-
+override_dh_clean:
 	dh_clean
-
-install: build
-	dh_testdir
-	dh_testroot
-	dh_prep
-	dh_installdirs
-
-	(cd $(VERSION_DIR) && python setup.py install --root="$(CURDIR)/debian/trac-graphviz" --no-compile $(py_setup_install_args))
-
-
-# Build architecture-independent files here.
-binary-indep: build install
-	dh_testdir
-	dh_testroot
-	dh_installchangelogs $(VERSION_DIR)/ReleaseNotes.txt
-	dh_installdocs $(VERSION_DIR)/README.txt
-	dh_installexamples $(VERSION_DIR)/examples/*
-	dh_install
-	dh_python2
-	dh_installman
-	dh_link
-	dh_compress
-	dh_fixperms
-	dh_installdeb
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
-
-binary-arch: build install
-
-binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install
+	[ -d *.egg-info ] && rm -rf *.egg-info || true
