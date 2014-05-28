@@ -1,3 +1,9 @@
+trac-graphviz (0.7.7-0.1~aroth~ppa3) trusty; urgency=medium
+
+  * fixed bogus dependency
+
+ -- Andreas Roth <aroth@arsoft-online.com>  Wed, 28 May 2014 06:40:38 +0200
+
 trac-graphviz (0.7.7-0.1~aroth~ppa2) trusty; urgency=medium
 
   * fixed dh_python2 trouble
